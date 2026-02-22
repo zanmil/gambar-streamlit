@@ -3,5 +3,5 @@ tensorflow
 numpy
 pandas
 Pillow
-openai
+groq
 python-dotenv
