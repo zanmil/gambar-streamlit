@@ -3,7 +3,7 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from PIL import Image
-import test_openai
+#import test_openai
 import os
 
 
@@ -11,7 +11,7 @@ import os
 st.set_page_config(page_title="Deteksi Penyakit Daun Jagung", layout="centered")
 
 # API KEY OpenAI (gunakan .env di produksi)
-test_openai.api_key = "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"  # Ganti dengan API key Anda
+#test_openai.api_key = "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"  # Ganti dengan API key Anda
 
 # Load model deteksi
 model = tf.keras.models.load_model("cnn_jgg_500.h5")
@@ -51,7 +51,7 @@ if uploaded_file is not None:
     st.info(f"🎯 Tingkat Akurasi Model: **{confidence:.2f}%**")
 
 # Rekomendasi Obat
-
+'''
     if predicted_class != "Sehat":
         st.markdown("### 💊 Rekomendasi Pengobatan:")
         with st.spinner("Mencari rekomendasi pengobatan dari AI..."):
@@ -76,3 +76,4 @@ if uploaded_file is not None:
 
     else:
         st.success("🌿 Tanaman Anda sehat. Tidak perlu pengobatan.")
+'''
