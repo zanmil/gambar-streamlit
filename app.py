@@ -3,7 +3,6 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from PIL import Image
-#import test_openai
 import os
 
 
@@ -49,31 +48,3 @@ if uploaded_file is not None:
     st.markdown(f"### 🧪 Hasil Deteksi:")
     st.success(f"📌 Penyakit Terdeteksi: **{predicted_class}**")
     st.info(f"🎯 Tingkat Akurasi Model: **{confidence:.2f}%**")
-
-# Rekomendasi Obat
-'''
-    if predicted_class != "Sehat":
-        st.markdown("### 💊 Rekomendasi Pengobatan:")
-        with st.spinner("Mencari rekomendasi pengobatan dari AI..."):
-            try:
-                prompt = f"Berikan rekomendasi pengobatan atau obat yang sesuai untuk tanaman jagung yang terkena penyakit '{predicted_class}'. Singkat dan jelas, maksimal 3 kalimat."
-
-                response = test_openai.ChatCompletion.create(
-                    model="gpt-3",
-                    messages=[
-                        {"role": "system", "content": "Kamu adalah ahli pertanian dan penyakit tanaman."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    max_tokens=150,
-                    temperature=0.7
-                )
-
-                rekomendasi_ai = response['choices'][0]['message']['content']
-                st.success(rekomendasi_ai)
-
-            except Exception:
-                st.warning("⚠️ Gagal mengambil data")
-
-    else:
-        st.success("🌿 Tanaman Anda sehat. Tidak perlu pengobatan.")
-'''
