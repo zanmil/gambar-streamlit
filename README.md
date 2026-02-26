@@ -1,26 +1,102 @@
-# Deteksi Penyakit Tanaman Jagung Menggunakan CNN
+# 🌽 Deteksi Penyakit Daun Jagung Otomatis
 
-## Deskripsi Proyek
+Aplikasi web berbasis deep learning untuk mendeteksi penyakit pada daun jagung secara otomatis menggunakan CNN, dilengkapi rekomendasi pengobatan dari AI (Groq LLaMA).
 
-Proyek ini bertujuan untuk mengembangkan model Convolutional Neural Network (CNN) yang dapat mendeteksi penyakit pada tanaman jagung berdasarkan gambar daun. Dengan menggunakan dataset gambar daun jagung yang telah diberi label, model ini akan dilatih untuk mengenali berbagai jenis penyakit yang umum terjadi pada tanaman jagung, seperti hawar daun, bercak daun, dan busuk batang. Hasil dari proyek ini diharapkan dapat membantu petani dalam mengidentifikasi penyakit pada tanaman jagung secara cepat dan akurat, sehingga dapat mengambil tindakan pencegahan yang tepat untuk meningkatkan hasil panen.
+---
 
-## Dataset
+## 📋 Deskripsi Proyek
 
-Dataset yang digunakan dalam proyek ini terdiri dari gambar daun jagung yang telah diberi label dengan jenis penyakit yang sesuai. Dataset ini mencakup berbagai kondisi daun, termasuk daun sehat dan daun yang terinfeksi oleh berbagai penyakit. Setiap gambar dalam dataset ini memiliki resolusi yang cukup tinggi untuk memastikan bahwa detail penting pada daun dapat dikenali oleh model CNN. Dataset ini dibagi menjadi dua bagian: data pelatihan (training set) dan data pengujian (testing set), dengan proporsi 80% untuk pelatihan dan 20% untuk pengujian.
+Proyek ini mengembangkan model **Convolutional Neural Network (CNN)** yang dapat mendeteksi penyakit pada tanaman jagung berdasarkan gambar daun. Model diintegrasikan ke dalam aplikasi web interaktif menggunakan **Streamlit**, sehingga petani dapat dengan mudah mengupload foto daun jagung dan mendapatkan:
 
-## Arsitektur Model
+- ✅ Hasil deteksi penyakit secara otomatis
+- 📊 Tingkat kepercayaan prediksi model
+- 💊 Rekomendasi pengobatan dari AI (Groq LLaMA 3.3)
 
-Model CNN yang digunakan dalam proyek ini terdiri dari beberapa lapisan konvolusi, lapisan pooling, dan lapisan fully connected. Arsitektur model ini dirancang untuk mengekstraksi fitur penting dari gambar daun jagung dan mengklasifikasikan jenis penyakit yang ada. Lapisan konvolusi digunakan untuk mendeteksi pola dan fitur pada gambar, sementara lapisan pooling membantu mengurangi dimensi data dan meningkatkan efisiensi model. Lapisan fully connected digunakan untuk menggabungkan fitur yang diekstraksi dan menghasilkan output klasifikasi akhir. Model ini juga menggunakan teknik regularisasi seperti dropout untuk mencegah overfitting dan meningkatkan generalisasi model.
+---
 
-## Hasil dan Evaluasi
+## 🦠 Kelas Penyakit yang Dideteksi
 
-Setelah melatih model CNN dengan dataset gambar daun jagung, hasil evaluasi menunjukkan bahwa model ini memiliki akurasi yang tinggi dalam mendeteksi penyakit pada tanaman jagung. Evaluasi dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score untuk mengukur kinerja model dalam mengklasifikasikan jenis penyakit. Hasil evaluasi menunjukkan bahwa model ini mampu mengenali berbagai jenis penyakit dengan tingkat akurasi yang memuaskan, sehingga dapat digunakan sebagai alat bantu bagi petani dalam mengidentifikasi penyakit pada tanaman jagung secara efektif.
+| Kelas | Keterangan |
+|---|---|
+| 🟡 Bercak Daun | Infeksi jamur yang menyebabkan bercak pada daun |
+| 🔴 Busuk Daun | Pembusukan jaringan daun akibat patogen |
+| 🟠 Karat Daun | Infeksi jamur *Puccinia* yang menimbulkan warna kecoklatan |
+| 🟢 Sehat | Daun jagung dalam kondisi normal |
 
-## Kesimpulan
+---
 
-Proyek ini berhasil mengembangkan model CNN yang efektif dalam mendeteksi penyakit pada tanaman jagung berdasarkan gambar daun. Dengan menggunakan dataset yang representatif dan arsitektur model yang tepat, model ini mampu mencapai akurasi yang tinggi dalam mengklasifikasikan berbagai jenis penyakit. Hasil dari proyek ini dapat memberikan manfaat besar bagi petani dalam mengidentifikasi penyakit pada tanaman jagung secara cepat dan akurat, sehingga dapat meningkatkan hasil panen dan mengurangi kerugian akibat penyakit. Proyek ini juga membuka peluang untuk pengembangan lebih lanjut, seperti penggunaan teknik augmentasi data atau arsitektur model yang lebih kompleks untuk meningkatkan kinerja deteksi penyakit pada tanaman jagung.
+## 🗂️ Struktur Proyek
 
-## Tool dan Teknologi
+```
+├── app.py                  # Aplikasi utama Streamlit
+├── cnn_jgg_500.h5          # Model CNN (tidak di-commit, >100MB)
+├── requirements.txt        # Dependensi Python
+├── .env                    # API key (tidak di-commit)
+├── .gitignore
+└── README.md
+```
 
-[!Python](https://img.shields.io/badge/Python-3.8-blue)] [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.4-orange)](https://www.tensorflow.org/) [![Keras](https://img.shields.io/badge/Keras-2.4-red)](https://keras.io/) [![NumPy](https://img.shields.io/badge/NumPy-1.19-green)](https://numpy.org/) [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.3-purple)](https://matplotlib.org/) [![Stramlit](https://img.shields.io/badge/Streamlit-0.80-yellow)](https://streamlit.io/)
+---
 
+## 🧠 Arsitektur Model
+
+Model CNN dilatih dengan **500 epoch** menggunakan dataset gambar daun jagung berlabel. Arsitektur terdiri dari:
+
+- **Lapisan Konvolusi** — mengekstraksi fitur visual dari gambar
+- **Lapisan Pooling** — mereduksi dimensi dan meningkatkan efisiensi
+- **Dropout** — mencegah overfitting
+- **Fully Connected Layer** — menghasilkan output klasifikasi 4 kelas
+
+Input gambar di-resize ke **224×224 piksel** dan dinormalisasi sebelum diprediksi.
+
+---
+
+## 📊 Dataset
+
+- Format: gambar `.jpg` / `.png` daun jagung berlabel
+- Pembagian: **80% training** / **20% testing**
+- Kelas: Bercak Daun, Busuk Daun, Karat Daun, Sehat
+
+---
+
+## 🚀 Cara Menjalankan
+
+**1. Clone repository:**
+```bash
+git clone https://github.com/zanmil/gambar-streamlit.git
+cd gambar-streamlit
+```
+
+**2. Install dependensi:**
+```bash
+pip install -r requirements.txt
+```
+
+**3. Buat file `.env` dan isi API key Groq:**
+```env
+GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxx
+```
+> Dapatkan API key gratis di https://console.groq.com
+
+**4. Tambahkan model** `cnn_jgg_500.h5` ke folder project (download terpisah)
+
+**5. Jalankan aplikasi:**
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+[![Python](https://img.shields.io/badge/Python-3.10-blue)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)](https://www.tensorflow.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-latest-red)](https://streamlit.io/)
+[![Groq](https://img.shields.io/badge/Groq-LLaMA_3.3-purple)](https://console.groq.com/)
+[![NumPy](https://img.shields.io/badge/NumPy-latest-green)](https://numpy.org/)
+[![Pillow](https://img.shields.io/badge/Pillow-latest-yellow)](https://python-pillow.org/)
+
+---
+
+## ⚠️ Catatan
+- API key Groq **gratis** dan bisa didapatkan di https://console.groq.com
