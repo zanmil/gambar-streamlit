@@ -22,4 +22,5 @@ Proyek ini berhasil mengembangkan model CNN yang efektif dalam mendeteksi penyak
 
 ## Tool dan Teknologi
 
-[!Python](https://img.shields.io/badge/Python-3.8-blue) [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.4-orange)](https://www.tensorflow.org/) [![Keras](https://img.shields.io/badge/Keras-2.4-red)](https://keras.io/) [![NumPy](https://img.shields.io/badge/NumPy-1.19-green)](https://numpy.org/) [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.3-purple)](https://matplotlib.org/) [![Stramlit](https://img.shields.io/badge/Streamlit-0.80-yellow)](https://streamlit.io/)
+[!Python](https://img.shields.io/badge/Python-3.8-blue)] [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.4-orange)](https://www.tensorflow.org/) [![Keras](https://img.shields.io/badge/Keras-2.4-red)](https://keras.io/) [![NumPy](https://img.shields.io/badge/NumPy-1.19-green)](https://numpy.org/) [![Matplotlib](https://img.shields.io/badge/Matplotlib-3.3-purple)](https://matplotlib.org/) [![Stramlit](https://img.shields.io/badge/Streamlit-0.80-yellow)](https://streamlit.io/)
+
